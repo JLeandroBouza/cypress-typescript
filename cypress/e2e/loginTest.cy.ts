@@ -1,13 +1,18 @@
 import { loginpage } from '../pages/login';
 import data  from '../fixtures/data.json';
 
-interface LoginData {
+interface LoginDataStandard {
   usuario_standard: string;
   password_standard: string;
-
 }
 
-const loginData = data[0] as LoginData;
+interface LoginDatalocked {
+  usuario_locked: string;
+  password_locked: string;
+}
+
+const loginDataStandard = data[0] as LoginDataStandard;
+const loginDatalocked = data[1] as LoginDatalocked;
 
 
 describe('Pruebas Automatizadas de Login de Usuario: ', () => {
@@ -18,12 +23,12 @@ describe('Pruebas Automatizadas de Login de Usuario: ', () => {
 
 
   it('Login Correcto de un usuario Standard', () => {
-    loginpage.login(loginData.usuario_standard, loginData.password_standard);
+    loginpage.login(loginDataStandard.usuario_standard, loginDataStandard.password_standard);
     cy.url().should('include', '/inventory.html');
   })
 
   it('Login Correcto de un usuario bloqueado', () => {
-    loginpage.login(loginData.usuario_locked, loginData.password_locked);
+    loginpage.login(loginDatalocked.usuario_locked, loginDatalocked.password_locked);
     cy.url().should('include', '/inventory.html');
   })
 })
