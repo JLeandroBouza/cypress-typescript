@@ -1,0 +1,13 @@
+//agregar esto al package.json  
+  
+  "devDependencies": {
+        "@types/chai": "^5.2.1",
+        "@types/mocha": "^10.0.10",
+        "chai": "^5.2.0",
+        "mocha": "^11.2.2",
+        "pino": "^9.6.0",
+        "pino-pretty": "^13.0.0",
+        "prettier": "^3.5.3",
+        "tsx": "^4.19.3",
+        "typescript": "^5.8.2"
+    }
