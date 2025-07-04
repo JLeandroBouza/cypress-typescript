@@ -3,12 +3,13 @@ export class loginPage {
     inputUsername: string;
     inputPassword: string;
     btnLogin: string;
-
+    messageError: string;
     
     constructor() {
         this.inputUsername = '#user-name';
         this.inputPassword = '#password';
         this.btnLogin = '#login-button';
+        this.messageError = 'h3[data-test="error"]';
     }
 
 
@@ -18,10 +19,9 @@ export class loginPage {
     cy.get(this.btnLogin).click();
   }
 
-  loginStandard() {
-    cy.fixture('data').then((data) => {
-      this.login(data.usuario_standard, data.password_standard);
-    });
+
+  verifyErrorMessage(expectedMessage: string) {
+    cy.get(this.messageError).should('have.text', expectedMessage);
   }
 }
 
